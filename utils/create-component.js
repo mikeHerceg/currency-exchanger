@@ -2,7 +2,6 @@ require("colors");
 const strHelper = require("./stringHelpers");
 const fs = require("fs");
 const components = require("./templates/component");
-const stories = require("./templates/stories");
 
 const componentName = process.argv[2];
 
@@ -37,21 +36,6 @@ generatedComponents.forEach((component) => {
   fs.writeFileSync(
     `${componentDirectory}/${kebabCase}${component.extension}`,
     component.content
-  );
-});
-
-//Build Stories
-const componentStoriesDirectory = `./src/components/${kebabCase}/stories`;
-fs.mkdirSync(componentStoriesDirectory);
-
-const generatedStories = stories.map((story) =>
-  story(kebabCase, paschalCase, titleCase)
-);
-
-generatedStories.forEach((story) => {
-  fs.writeFileSync(
-    `${componentStoriesDirectory}/${kebabCase}${story.extension}`,
-    story.content
   );
 });
 
