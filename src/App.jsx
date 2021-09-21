@@ -12,7 +12,20 @@ export const App = () =>{
     <Router>   
       <Switch>
         <Route path={"/"}>
-            Get to Work on your New App!
+
+          <div>
+            
+            currency type select
+            
+            to
+            currency type Select
+          
+            ----
+            input Value
+            ---
+            OutPutValue
+          </div>
+        
         </Route>
       </Switch>   
     </Router>
@@ -20,3 +33,11 @@ export const App = () =>{
 };
 
 export default App;
+
+
+/*TODO
+-base text input
+-select field
+-basic error handling
+-get API
+*/

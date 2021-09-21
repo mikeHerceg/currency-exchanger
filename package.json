@@ -6,6 +6,7 @@
     "build": "webpack --mode=production",
     "build-prod": "echo y | rmdir /s dist && webpack --mode=production",
     "build-dev": "webpack --mode=development",
+    "generate": "node ./utils/create-component",
     "clean": "rm -rf ./dist",
     "test": "jest",
     "test:watch": "jest --watchAll"
