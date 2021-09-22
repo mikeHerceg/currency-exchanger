@@ -61,7 +61,7 @@ module.exports = {
             template: "./src/index.html",
         }),
         new ESLintPlugin({
-            extensions: ['js', 'jsx'],
+            //extensions: ['js', 'jsx'],
             fix:true,
             context:'./src',
         }),

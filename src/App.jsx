@@ -1,31 +1,40 @@
 import "./main.scss";
-import React from 'react';
+import React, {useRef, useState, useEffect } from 'react';
 import {
   HashRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
+import SelectField from './components/select-field';
+import GetExchangeRates from "./services/getExchangeRates";
+import Currencies from "./assets/currencies";
 
 export const App = () =>{
+  const inputRef = useRef();
+  const [outPut, setOutPut] = useState();
+  const [exchangeData, setExchangeData] = useState([]);
+  const options = Currencies
+  
+  useEffect(()=>{
+    GetExchangeRates('USD').then(data=>setExchangeData(data))
+  },[]);
+  console.log(exchangeData);
+  
   return(
     <Router>   
       <Switch>
         <Route path={"/"}>
-
           <div>
-          https://www.exchangerate-api.com/
-
+          Convert
+          <SelectField name="c-type" optionList={options} />
+          to
+          <SelectField name="c-new"  optionList={options} />
+          <input ref={inputRef} value="" placeholder="type here"type="text"/>
+          <button>Convert Value</button>
           
-            currency type select
-            
-            to
-            currency type Select
-          
-            ----
-            input Value
-            ---
-            OutPutValue
+          {outPut}            
+      
           </div>
         
         </Route>

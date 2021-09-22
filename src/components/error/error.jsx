@@ -5,21 +5,22 @@ import PropTypes from "prop-types";
 import styles from "./error.module.scss";
 
 
-const Error = ({ 
+const ErrorMessage = ({ 
+  message,
   ...props
 }) => {
   return (
-    <div data-testid="error" className={styles['error']}>
-      //add component render here
-    </div>
-  ) 
+    <span {...props} data-testid="error" className={styles['error']+' text-danger text-small'}>
+     {message}
+    </span>
+  ); 
 };
 
-export default Error;
+export default ErrorMessage;
 
 Error.propTypes = {
-  //add Proptypes here
-}
+  message:PropTypes.string
+};
 Error.defaultProps = {
   //add defualt values
-}
+};

@@ -6,20 +6,29 @@ import styles from "./label.module.scss";
 
 
 const Label = ({ 
+  label,
+  required,
+  forInput,
   ...props
 }) => {
   return (
-    <div data-testid="label" className={styles['label']}>
-      //add component render here
-    </div>
-  ) 
+    <label 
+      {...props}
+      data-testid="label" 
+      className={styles['label']}
+      htmlFor={forInput}
+      aria-label={label}
+    >
+      {label}
+      {required ?<span className={styles['required-dot']}></span>: null }
+    </label>
+  ); 
 };
 
 export default Label;
 
 Label.propTypes = {
-  //add Proptypes here
-}
-Label.defaultProps = {
-  //add defualt values
-}
+  label: PropTypes.string,
+  required: PropTypes.bool,
+  forInput: PropTypes.string,
+};
