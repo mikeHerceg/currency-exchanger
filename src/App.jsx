@@ -10,29 +10,38 @@ import SelectField from './components/select-field';
 import GetExchangeRates from "./services/getExchangeRates";
 import Currencies from "./assets/currencies";
 
+
 export const App = () =>{
   const inputRef = useRef();
   const [outPut, setOutPut] = useState();
   const [exchangeData, setExchangeData] = useState([]);
   const options = Currencies
+  const [startCurrency, setStartCurrency] = useState('USD');
+  const [endCurrency, setEndCurrency] = useState('EUR');
   
   useEffect(()=>{
-    GetExchangeRates('USD').then(data=>setExchangeData(data))
-  },[]);
+    GetExchangeRates(startCurrency).then(data=>setExchangeData(data))
+  },[startCurrency]);
   console.log(exchangeData);
   
+  const convert = () =>{
+    let rate = exchangeData.rates[endCurrency]
+    let value = inputRef.current.value
+    setOutPut(value * rate)
+  }
+
+
   return(
     <Router>   
       <Switch>
         <Route path={"/"}>
           <div>
           Convert
-          <SelectField name="c-type" optionList={options} />
+          <SelectField onChange={(e)=>setStartCurrency(e.target.value)} name="c-type" optionList={options} />
           to
-          <SelectField name="c-new"  optionList={options} />
-          <input ref={inputRef} value="" placeholder="type here"type="text"/>
-          <button>Convert Value</button>
-          
+          <SelectField onChange={(e)=>setEndCurrency(e.target.value)}name="c-new"  optionList={options} />
+          <input ref={inputRef} placeholder="type here"type="text"/>
+          <button onClick={()=>convert()}>Convert Value</button>
           {outPut}            
       
           </div>
