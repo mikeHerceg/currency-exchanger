@@ -16,9 +16,11 @@ const SelectField = ({
   ...props
 }) => {
   return (
-    <div {...props} className="field">
-      <Label label={label} required={required} forInput={name}/>
-      <select name="">
+    <div {...props}>
+      {label? 
+        <Label label={label} required={required} forInput={name}/>
+      :null}
+      <select name={name} className='form-control'>
         {
           optionList.map((option)=>{
             return(

@@ -17,13 +17,12 @@ export const App = () =>{
   const [exchangeData, setExchangeData] = useState([]);
   const options = Currencies
   const [startCurrency, setStartCurrency] = useState('USD');
-  const [endCurrency, setEndCurrency] = useState('EUR');
+  const [endCurrency, setEndCurrency] = useState('USD');
   
   useEffect(()=>{
     GetExchangeRates(startCurrency).then(data=>setExchangeData(data))
   },[startCurrency]);
-  console.log(exchangeData);
-  
+
   const convert = () =>{
     let rate = exchangeData.rates[endCurrency]
     let value = inputRef.current.value
@@ -35,14 +34,18 @@ export const App = () =>{
     <Router>   
       <Switch>
         <Route path={"/"}>
-          <div>
-          Convert
-          <SelectField onChange={(e)=>setStartCurrency(e.target.value)} name="c-type" optionList={options} />
-          to
-          <SelectField onChange={(e)=>setEndCurrency(e.target.value)}name="c-new"  optionList={options} />
-          <input ref={inputRef} placeholder="type here"type="text"/>
-          <button onClick={()=>convert()}>Convert Value</button>
-          {outPut}            
+          <div className="container"> 
+            <h1>Convert</h1>
+            <div className="selection-container d-flex justify-content-between col-8 align-items-center">
+              <SelectField onChange={(e)=>setStartCurrency(e.target.value)} name="c-type" optionList={options} />
+              <span className="mr-2 ml-2">
+              to
+              </span>
+              <SelectField onChange={(e)=>setEndCurrency(e.target.value)}name="c-new"  optionList={options} />
+            </div>
+            <input className=" form-control col-12 mt-2" ref={inputRef} placeholder="type here"type="text"/>
+            <button class="btn btn-primary mt-2" onClick={()=>convert()}>Convert Value</button>
+            <h1>{outPut}</h1>    
       
           </div>
         
