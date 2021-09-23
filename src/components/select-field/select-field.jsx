@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 
 
 const SelectField = ({ 
+  name,
   label,
   required,
   optionList,
@@ -20,7 +21,7 @@ const SelectField = ({
       {label? 
         <Label label={label} required={required} forInput={name}/>
       :null}
-      <select name={name} className='form-control'>
+      <select name={name} className='form-select'>
         {
           optionList.map((option)=>{
             return(
@@ -38,6 +39,7 @@ export default SelectField;
 
 SelectField.propTypes = {
   label: PropTypes.string,
+  name: PropTypes.string,
   errorMessage: PropTypes.string,
   optionList: PropTypes.array,
   required: PropTypes.bool

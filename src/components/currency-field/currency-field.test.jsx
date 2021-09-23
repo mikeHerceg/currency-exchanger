@@ -3,9 +3,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
 
-import TextField from "../text-field";
+import CurrencyField from "../currency-field";
 
-describe("TextField", () => {
+describe("CurrencyField", () => {
 
   beforeEach(() => {
     props = {
@@ -13,7 +13,7 @@ describe("TextField", () => {
     };
   });
 
-  const renderComponent = () => render(<TextField {...props} />);
+  const renderComponent = () => render(<CurrencyField {...props} />);
 
   it("should render correctly", () => {
     // Arrange
@@ -22,7 +22,7 @@ describe("TextField", () => {
     const { getByTestId } = renderComponent();
 
     // Assert
-    const component = getByTestId("text-field");
+    const component = getByTestId("currency-field");
     expect(component).toBeDefined();
   });
 });

@@ -1,1 +1,21 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+
+#root{
+    height:100vh;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .custom-container{
+        width: 100%;
+        max-width: 600px;
+    }
+    .selection-container{
+        display: flex;
+        align-items: center;
+        flex-grow:1;
+        > span{
+            margin:0 16px;
+        }
+    }
+}

@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "text-field.module.scss"
-    ],
-    "names": [],
-    "file": "text-field.module.css"
-}

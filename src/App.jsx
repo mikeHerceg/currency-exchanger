@@ -9,6 +9,7 @@ import {
 import SelectField from './components/select-field';
 import GetExchangeRates from "./services/getExchangeRates";
 import Currencies from "./assets/currencies";
+import CurrencyField from "./components/currency-field";
 
 
 export const App = () =>{
@@ -34,19 +35,18 @@ export const App = () =>{
     <Router>   
       <Switch>
         <Route path={"/"}>
-          <div className="container"> 
+          <div className="custom-container"> 
             <h1>Convert</h1>
-            <div className="selection-container d-flex justify-content-between col-8 align-items-center">
+            <div className="selection-container mb-2">
               <SelectField onChange={(e)=>setStartCurrency(e.target.value)} name="c-type" optionList={options} />
               <span className="mr-2 ml-2">
               to
               </span>
               <SelectField onChange={(e)=>setEndCurrency(e.target.value)}name="c-new"  optionList={options} />
             </div>
-            <input className=" form-control col-12 mt-2" ref={inputRef} placeholder="type here"type="text"/>
-            <button class="btn btn-primary mt-2" onClick={()=>convert()}>Convert Value</button>
+            <CurrencyField inputRef={inputRef} placeholder="type here"type="text"/>
+            <button className="btn btn-primary" onClick={()=>convert()}>Convert Value</button>
             <h1>{outPut}</h1>    
-      
           </div>
         
         </Route>
