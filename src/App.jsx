@@ -56,11 +56,3 @@ export const App = () =>{
 };
 
 export default App;
-
-
-/*TODO
--base text input
--select field
--basic error handling
--get API
-*/
