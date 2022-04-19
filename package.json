@@ -1,5 +1,6 @@
 {
   "private": true,
+  "homepage": "https://mikeherceg.github.io/currency-exchanger/",
   "scripts": {
     "start": "webpack serve",
     "watch": "webpack --watch",
